@@ -1,0 +1,107 @@
+#include<iostream>
+using namespace std;
+class que{
+    int *arr;
+    int size;
+    int st;
+    int en;
+    public:
+    que(int val)
+    {
+        this->size=val;
+        arr=new int[val];
+        st=-1;
+        en=-1;
+    }
+    void push(int x)
+    {
+        if(en==size-1)
+        {
+            cout<<"queue overflow ";
+        }
+        else if(st==-1&&en==-1)
+        {
+            st++;
+            en++;
+            arr[st]=x;
+        }
+        else{
+            en++;
+            arr[en]=x;
+        }
+    }
+    void pop()
+    {
+        if(st==-1&&en==-1)
+        {
+            cout<<"queue underflow";
+        }
+        else if(st==en)
+        {
+            st=-1;
+            en=-1;
+        }
+        else{
+            st++;
+        }
+    }
+    bool isempty()
+    {
+        if(st==-1&&en==-1)
+        {
+            return true;
+        }
+        return false;
+    }
+    bool isfull()
+    {
+        if(en==size-1)
+        {
+            return true;
+        }
+        return false;
+    }
+    void display()
+    {
+        if(st==-1&&en==-1)
+        {
+            cout<<"empty queue"<<endl;
+        }
+        else{
+            for(int i=st;i<=en;i++)
+            {
+                cout<<arr[i]<<" ";
+            }
+        }
+    }
+    void peek()
+    {
+        if(st==-1)
+        {
+            cout<<"empty ";
+        }
+        else{
+            cout<<arr[st];
+        }
+    }
+};
+int main()
+{
+    que q(3);
+    q.push(20);
+    q.push(100);
+    q.push(30);
+    q.display();
+    q.pop();
+    q.pop();
+    q.pop();
+    q.display();
+
+    
+
+
+
+
+
+    return 0;
+}
